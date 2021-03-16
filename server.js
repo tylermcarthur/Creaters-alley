@@ -54,8 +54,7 @@ app.get('/api/page/:id/:num',async(req,res)=>{
         const scenario_name = req.params.id
         const page_number = req.params.num
         pool.query(`SELECT page_text FROM pages WHERE page_name = ${page_number} AND scenario_name = ${scenario_name}`,(err,data)=>{
-            let text = Object.values(data.rows)
-            res.json(text)
+            res.json(data)
         })
     } catch (err) {
         console.error(err.message)
