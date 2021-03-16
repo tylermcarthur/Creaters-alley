@@ -21,7 +21,8 @@ app.post('/api/public', async (req,res)=>{
 //read one
 app.get('/api/public/', async(req,res)=>{
     try {
-        res.end('boop')
+        const text = await pool.query("SELECT * FROM scenarios")
+        res.end(text)
     } catch (err) {
         console.error(err.message)
     }
