@@ -18,9 +18,10 @@ app.post('/api/public', async (req,res)=>{
         console.error(err.message)
     }
 });
+// get all
 app.get('/api/public/opening_page', async(req,res)=>{
     try {
-        const students = pool.query("SELECT scenario_name FROM scenarios", (err, data) => {
+        const scenarios = pool.query("SELECT scenario_name FROM scenarios", (err, data) => {
             let arr1 = data.rows
             let arr2 = []
             arr1.forEach(element => {
@@ -32,9 +33,13 @@ app.get('/api/public/opening_page', async(req,res)=>{
         console.error(err.message)
     }
 })
-//read all
-app.get('/api/public', async(req,res)=>{
+// get specific
+app.get('/api/public/:id', async(req,res)=>{
     try {
+        const name = req.params.id
+        const x = pool.query(`SELECT opening_text FROM scenarios WHERE scenario_name = ${name}`,(err,data)=>{
+            res.json(data.rows)
+        })
     } catch (err) {
         console.error(err.message)
     }
