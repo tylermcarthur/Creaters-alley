@@ -21,31 +21,32 @@ inputBox.addEventListener('keypress', (e)=>{
         if(dataHolder1 == ""){
             iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/${inputBox.value}`)
         }
+        dataHolder1 = inputBox.value
+        inputBox.value = ''
     }
-    dataHolder1 = inputBox.value
-    inputBox.value = ''
 })
 // for selecting Back
 inputBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value == 'back'){
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
+        dataHolder1 = ''
+        inputBox.value = ''
     }
-    dataHolder1 = ''
-    inputBox.value = ''
 })
 // for deleting the selected entry
 inputBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value == 'delete'){
         deleteEntry({scenario_name:dataHolder1});
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
+        
+        dataHolder1 = ''
+        inputBox.value = ''
     }
-    dataHolder1 = ''
-    inputBox.value = ''
 })
 // to start playing the scenario
 inputBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value == 'play'){
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
+        inputBox.value = ''
     }
-    inputBox.value = ''
 })
