@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express')
-const app = express();
 const dataBase = require('Database/db_configuration.js');
 const port = process.env.PORT
 
