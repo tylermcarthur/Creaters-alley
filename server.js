@@ -38,8 +38,8 @@ app.get('/api/public/:id', async(req,res)=>{
     try {
         const name = req.params.id
         res.end(name);
-        const x = pool.query(`SELECT opening_text FROM scenarios WHERE scenario_name = ${name}`,(err,data)=>{
-            res.json(data.rows)
+        pool.query(`SELECT opening_text FROM scenarios WHERE scenario_name = ${name}`,(err,data)=>{
+            res.json(data)
         })
     } catch (err) {
         console.error(err.message)
