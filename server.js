@@ -36,7 +36,6 @@ app.get('/api/public/opening_page', async(req,res)=>{
 // get specific
 app.get('/api/public/:id', async(req,res)=>{
     try {
-        res.end('boop')
         const name = req.params.id
         const x = pool.query(`SELECT opening_text FROM scenarios WHERE scenario_name = ${name}`,(err,data)=>{
             res.json(data.rows)
