@@ -21,7 +21,12 @@ app.post('/api/public', async (req,res)=>{
 app.get('/api/public/opening_page', async(req,res)=>{
     try {
         const students = pool.query("SELECT scenario_name FROM scenarios", (err, data) => {
-            res.json((data.rows));
+            let arr1 = data.rows
+            let arr2 = []
+            arr1.forEach(element => {
+                arr2.push(Object.values(element))
+            });
+            res.json(arr2);
         })
     } catch (err) {
         console.error(err.message)
