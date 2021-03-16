@@ -1,6 +1,6 @@
 const inputBox = document.querySelector('#inputBox');
 const iframe = document.querySelector('#iframe')
-let dataHolder1 = "" // this is used to hold which scenario they selected
+let dataHolder1 = '' // this is used to hold which scenario they selected
 
 // this is the helper function for deleting the entry
 async function deleteEntry(data){
