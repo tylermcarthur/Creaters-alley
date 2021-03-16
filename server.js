@@ -21,6 +21,7 @@ app.post('/api/public', async (req,res)=>{
 //read one
 app.get('/api/public/', async(req,res)=>{
     try {
+        res.end('boop')
     } catch (err) {
         console.error(err.message)
     }
