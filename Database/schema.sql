@@ -6,7 +6,11 @@ CREATE TABLE scenarios(
 );
 CREATE TABLE pages(
    page_ID SERIAL PRIMARY KEY NOT NULL,
-   page_name TEXT NOT NULL,
+   page_number int NOT NULL,
    page_text TEXT NOT NULL,
-   scenario_ID int
+   scenario_name TEXT
 );
+git add .
+git commit -m 'new commit'
+git push
+git push heroku main

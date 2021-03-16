@@ -10,15 +10,7 @@ const app = express();
 app.use(express.json()) // lets us read incoming req.body data as json
 app.use(express.static('public'));
 
-// create 
-app.post('/api/public', async (req,res)=>{
-    try {
-        res.end('boop')
-    } catch (err) {
-        console.error(err.message)
-    }
-});
-// get all
+// get all the scenarios for the starting home page
 app.get('/api/public/opening_page', async(req,res)=>{
     try {
         const scenarios = pool.query("SELECT scenario_name FROM scenarios", (err, data) => {
@@ -33,7 +25,7 @@ app.get('/api/public/opening_page', async(req,res)=>{
         console.error(err.message)
     }
 })
-// get specific
+// get specific scenario to then choose actions from
 app.get('/api/public/:id', async(req,res)=>{
     try {
         const name = req.params.id
@@ -45,15 +37,7 @@ app.get('/api/public/:id', async(req,res)=>{
         console.error(err.message)
     }
 })
-//update
-app.patch('/api/public/', async (req,res)=>{
-    try {
-
-    } catch (err) {
-        console.error(err.message)
-    }
-})
-//delete
+//delete the scenario previously chosen
 app.delete('/api/public/', async(req,res)=>{
   try {
       const name = req.body.scenario_name
@@ -63,6 +47,19 @@ app.delete('/api/public/', async(req,res)=>{
   } catch (err) {
       console.error(err.message)
   }
+})
+//used to send pages back after play was selected
+app.get('/api/page/:id/:num',async(req,res)=>{
+    try {
+        const scenario_name = req.params.id
+        const page_number = req.params.num
+        pool.query(`SELECT page_text FROM pages WHERE page_name = ${page_number} AND scenario_name = ${scenario_name}`,(err,data)=>{
+            let text = Object.values(data.rows)
+            res.json(text)
+        })
+    } catch (err) {
+        console.error(err.message)
+    }
 })
 
 // causes our server to listen for incoming reuqests to this port
