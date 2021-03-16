@@ -13,6 +13,7 @@ app.use(express.static('public'));
 // create 
 app.post('/api/public', async (req,res)=>{
     try {
+        res.end('boop')
     } catch (err) {
         console.error(err.message)
     }
