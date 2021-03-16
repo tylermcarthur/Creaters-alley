@@ -9,7 +9,7 @@ const app = express();
 
 // middleware 
 app.use(express.json()) // lets us read incoming req.body data as json
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 // create 
 app.post('/api/public', async (req,res)=>{
@@ -19,6 +19,9 @@ app.post('/api/public', async (req,res)=>{
     }
 });
 //read one
+app.get('/',(req,res){
+    res.end('boop')
+})
 app.get('/api/public/', async(req,res)=>{
     try {
     } catch (err) {
