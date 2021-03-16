@@ -22,6 +22,7 @@ app.post('/api/public', async (req,res)=>{
 app.get('/api/public/opening_page', async(req,res)=>{
     try {
         const scenarios = pool.query("SELECT scenario_name FROM scenarios", (err, data) => {
+            res.end('boop')
             let arr1 = data.rows
             let arr2 = []
             arr1.forEach(element => {
