@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express')
-const dataBase = require('Database/db_configuration.js');
+const dataBase = require('/home/tyler/Work/Creaters-alley/Database/db_configuration.js');
 const port = process.env.PORT
 
 // our server container
