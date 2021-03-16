@@ -26,7 +26,7 @@ inputBox.addEventListener('keypress', (e)=>{
 // for selecting Back
 inputBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value.toLowerCase == 'back'){
-        iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/`)
+        iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
     }
 })
 // for deleting the selected entry
