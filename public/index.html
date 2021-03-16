@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creater's Alley</title>
     <link rel="stylesheet" href="style.css">
+    <title>Creater's Alley</title>  
 </head>
-<body>
-    <div>HELLO WORLD</div>
-    <iframe src="https://creaters-alley.herokuapp.com/api/public" frameborder="0"></iframe>
+<body scroll='no' style="overflow:hidden"> 
+    <div class=" w-100 h-100 position-absolute" style="top: 0%; right: 0%;" id="gradient"></div>
+    <div class=" w-100 h-100 position-absolute" style="top: 0%; right: 0%;" id="bubbleHolder">
+    </div>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-pill shadow mb-5" >
+        </nav>
+    </div>
+    <div class="container container-fluid w-50 h-50 bg-dark position-absolute shadow-lg" style="top: 17%; right: 20.5%;" id="videoPlayer"> 
+        <div id="player"></div>
+    </div>
+    <div class= "container w-50 position-absolute overflow-auto" style="top: 73%; right: 20.5%; height: 20%;" id="copyTextContainer">
+        <p class="text-start text-break fs-1"  id="textToCopy"></div>
+    <button type="button" class="btn btn-outline-primary position-absolute" style="bottom: 28%;right: 20.5%;" id="copyBtn">COPY</button>
+    <script> 
+    </script>
+    <script src="app.js"></script>
 </body>
-<script src="app.js"></script>
 </html>
