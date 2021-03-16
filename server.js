@@ -19,9 +19,10 @@ app.post('/api/public', async (req,res)=>{
     }
 });
 //read one
-app.get('/',(req,res){
+app.get('/',(req,res)=>{
     res.end('boop')
-})
+    }
+)
 app.get('/api/public/', async(req,res)=>{
     try {
     } catch (err) {
