@@ -18,20 +18,20 @@ async function deleteEntry(data){
 
 // for selecting a scenario
 inputBox.addEventListener('keypress', (e)=>{
-    if(e.key == 'Enter' && inputBox.value.toLowerCase != 'play' && inputBox.value.toLowerCase != 'back' && inputBox.value.toLowerCase != 'delete'){
+    if(e.key == 'Enter' && inputBox.value != 'play' && inputBox.value!= 'back' && inputBox.value != 'delete'){
         dataHolder1 = inputBox.value
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/${inputBox.value}`)
     }
 })
 // for selecting Back
 inputBox.addEventListener('keypress', (e)=>{
-    if(e.key == 'Enter' && inputBox.value.toLowerCase == 'back'){
+    if(e.key == 'Enter' && inputBox.value == 'back'){
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
     }
 })
 // for deleting the selected entry
 inputBox.addEventListener('keypress', (e)=>{
-    if(e.key == 'Enter' && inputBox.value.toLowerCase == 'delete'){
+    if(e.key == 'Enter' && inputBox.value == 'delete'){
         deleteEntry({scenario_name:dataHolder1});
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/`)
     }
