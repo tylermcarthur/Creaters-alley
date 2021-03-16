@@ -18,11 +18,13 @@ app.post('/api/public', async (req,res)=>{
         console.error(err.message)
     }
 });
-//read one
-app.get('/api/public/', async(req,res)=>{
+app.get('/api/public/opening_page', async(req,res)=>{
     try {
-        const text = await pool.query("SELECT * FROM scenarios")
-        res.end(text)
+        const client = await pool.connect
+        const students = pool.query("SELECT * FROM scenarios", (err, data) => {
+            res.json(data.rows);
+            client.release();
+        })
     } catch (err) {
         console.error(err.message)
     }
