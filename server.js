@@ -24,7 +24,7 @@ app.get('/api/public/opening_page', async(req,res)=>{
             let arr1 = data.rows
             let arr2 = []
             arr1.forEach(element => {
-                arr2.push(Object.values(element))
+                arr2.push(Object.values(element)[0])
             });
             res.json(arr2);
         })
