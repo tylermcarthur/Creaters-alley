@@ -75,7 +75,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
         .then((resp)=> resp.json())
         .then(function(data){
             console.log(data)
-            textContainer.innerHTML = data[0].rows
+            textContainer.innerHTML = data.rows
 
             scenarioBox.value = ''
         })
