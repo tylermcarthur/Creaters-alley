@@ -31,9 +31,9 @@ scenarioBox.addEventListener('keypress', async(e)=>{
             .then((resp)=> resp.json())
             .then(function(data){
                 console.log(data)
-                textContainer.innerHTML = data
+                textContainer.innerHTML = data[0].opening_text
                 
-                dataHolder1 = inputBox.value
+                dataHolder1 = scenarioBox.value
                 inputBox.value = ''
             })
         }
