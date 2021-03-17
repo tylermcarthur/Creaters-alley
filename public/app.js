@@ -123,6 +123,7 @@ actionBox.addEventListener('keypress', async(e)=>{
             textContainer.innerHTML = data.rows[0].page_text
             scenarioBox.value = ''
             dataholder3 = [];
+            console.log(dataholder3)
         })
         } else {
             window.alert("The action you picked does not work here.")
