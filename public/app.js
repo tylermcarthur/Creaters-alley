@@ -92,9 +92,16 @@ scenarioBox.addEventListener('keypress', async(e)=>{
         fetch(`https://creaters-alley.herokuapp.com/api/actions/${dataHolder1}/${dataholder3}`)
         .then((resp)=> resp.json())
         .then(function(data){
-            
-            //dataholder2.push()
-            console.log(data)
+            for(let i = 0; i < data.rows.length; i++){
+                dataholder2.push(
+                    {
+                        action:data.rows[i].actions_text,
+                        toPage:data.rows[i].to_page_number
+                    }
+                )
+
+            }
+            console.log(dataholder2)
             scenarioBox.value = ''
         })
     }
