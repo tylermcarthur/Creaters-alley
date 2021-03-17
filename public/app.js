@@ -24,8 +24,8 @@ async function deleteEntry(data){
 // these are my main functions that will be directly called
 
 // for selecting a scenario
-scenarioBox.addEventListener('keypress', (e)=>{
-    if(e.key == 'Enter' && inputBox.value != 'play' && inputBox.value!= 'back' && inputBox.value != 'delete'){
+scenarioBox.addEventListener('keypress', async(e)=>{
+    if(e.key == 'Enter' && scenarioBox.value != 'play' && scenarioBox.value!= 'back' && scenarioBox.value != 'delete'){
         if(dataHolder1 == ""){
             fetch(`https://creaters-alley.herokuapp.com/api/public/${scenarioBox.value}`)
             .then((resp)=> resp.json())
@@ -40,33 +40,50 @@ scenarioBox.addEventListener('keypress', (e)=>{
     }
 })
 // for selecting Back
-scenarioBox.addEventListener('keypress', (e)=>{
-    if(e.key == 'Enter' && inputBox.value == 'back'){
-        iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
-        dataHolder1 = ''
-        inputBox.value = ''
+scenarioBox.addEventListener('keypress', async(e)=>{
+    if(e.key == 'Enter' && scenarioBox.value == 'back'){
+        fetch(`https://creaters-alley.herokuapp.com/api/public/opening_page`)
+        .then((resp)=> resp.json())
+        .then(function(data){
+            console.log(data)
+            textContainer.innerHTML = data
+            
+            dataHolder1 = ''
+            inputBox.value = ''
+        })
     }
 })
 // for deleting the selected entry
-scenarioBox.addEventListener('keypress', (e)=>{
-    if(e.key == 'Enter' && inputBox.value == 'delete'){
+scenarioBox.addEventListener('keypress', async(e)=>{
+    if(e.key == 'Enter' && scenarioBox.value == 'delete'){
         deleteEntry({scenario_name:dataHolder1});
-        iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
-        
-        dataHolder1 = ''
-        inputBox.value = ''
+        fetch(`https://creaters-alley.herokuapp.com/api/public/opening_page`)
+        .then((resp)=> resp.json())
+        .then(function(data){
+            console.log(data)
+            textContainer.innerHTML = data
+            
+            dataHolder1 = ''
+            inputBox.value = ''
+        })
     }
 })
 // to start playing the scenario
-scenarioBox.addEventListener('keypress', (e)=>{
-    if(e.key == 'Enter' && inputBox.value == 'play'){
-        iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
-        inputBox.value = ''
+scenarioBox.addEventListener('keypress', async(e)=>{
+    if(e.key == 'Enter' && scenarioBox.value == 'play'){
+        fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
+        .then((resp)=> resp.json())
+        .then(function(data){
+            console.log(data)
+            textContainer.innerHTML = data
+
+            inputBox.value = ''
+        })
     }
 })
 
 // on document load populate the main text box with stuff
-window.addEventListener('DOMContentLoaded', async (e)=>{
+window.addEventListener('DOMContentLoaded', async(e)=>{
     fetch('https://creaters-alley.herokuapp.com/api/public/opening_page')
     .then((resp)=> resp.json())
     .then(function(data){
