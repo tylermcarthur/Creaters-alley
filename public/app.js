@@ -88,7 +88,7 @@ window.addEventListener('DOMContentLoaded', async(e)=>{
     .then((resp)=> resp.json())
     .then(function(data){
         console.log(data)
-        textContainer.innerHTML = data
+        textContainer.innerHTML = data.rows
 
     })
 })
