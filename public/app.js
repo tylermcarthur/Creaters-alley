@@ -3,7 +3,7 @@ const scenarioBox = document.querySelector('#scenario-input-box');
 const textContainer = document.querySelector('#text_container')
 let dataHolder1 = "" // this is used to hold which scenario they selected
 let dataholder2 = [] // this will be used to hold all the page objects that will get pushed once play is used
-let dataholder3; // this will hold the current page id so that actions knows whats going on
+let dataholder3 = 1 // this will hold the current page id so that actions knows whats going on
 
 // this is where all the helper functions are
 
@@ -79,7 +79,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
         .then((resp)=> resp.json())
         .then(function(data){
             console.log(data.rows[0])
-            dataholder3 = data.rows[0].page_id
+            dataholder3 = data.rows[0].page_number
             textContainer.innerHTML = data.rows[0].page_text
             scenarioBox.value = ''
         })
@@ -89,6 +89,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
 // to save all the actions to an array once play is called
 scenarioBox.addEventListener('keypress', async(e)=>{
     if(e.key == 'Enter' && scenarioBox.value == 'play'){
+        console.log(dataholder3)
         fetch(`https://creaters-alley.herokuapp.com/api/actions/${dataHolder1}/${dataholder3}`)
         .then((resp)=> resp.json())
         .then(function(data){
