@@ -27,10 +27,16 @@ async function deleteEntry(data){
 scenarioBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value != 'play' && inputBox.value!= 'back' && inputBox.value != 'delete'){
         if(dataHolder1 == ""){
-            iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/${inputBox.value}`)
+            fetch(`https://creaters-alley.herokuapp.com/api/public/${scenarioBox.value}`)
+            .then((resp)=> resp.json())
+            .then(function(data){
+                console.log(data)
+                textContainer.innerHTML = data
+                
+                dataHolder1 = inputBox.value
+                inputBox.value = ''
+            })
         }
-        dataHolder1 = inputBox.value
-        inputBox.value = ''
     }
 })
 // for selecting Back
