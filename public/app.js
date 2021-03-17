@@ -1,6 +1,6 @@
 const actionBox = document.querySelector('#inputBox');
-const scenarioBox = document.querySelector('#inputBox');
-const iframe = document.querySelector('#iframe')
+const scenarioBox = document.querySelector('#scenario-input-box');
+const textContainer = document.querySelector('#text_container')
 let dataHolder1 = '' // this is used to hold which scenario they selected
 let dataholder2 = [] // this will be used to hold all the page objects that will get pushed once play is used
 
@@ -57,4 +57,13 @@ scenarioBox.addEventListener('keypress', (e)=>{
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
         inputBox.value = ''
     }
+})
+
+// on document load populate the main text box with stuff
+textContainer.addEventListener('DOMContentLoaded', async (e)=>{
+    const response = await fetch('https://creaters-alley.herokuapp.com/api/public/opening_page',{
+        method: 'GET',
+        mode: 'cors',
+    })
+    textContainer.innerHTML = response
 })
