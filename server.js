@@ -52,9 +52,8 @@ app.delete('/api/public/', async(req,res)=>{
 app.get('/api/page/:id/:num',async(req,res)=>{
     try {
         const scenario_name = req.params.id
-        let text = ''
         const page_number = req.params.num
-        pool.query(`SELECT * FROM pages WHERE pages.page_number = ${page_number} AND pages.scenario_name = '${text}'`,(err,data)=>{
+        pool.query(`SELECT * FROM pages WHERE pages.page_number = 1 AND pages.scenario_name = '"testpage"'`,(err,data)=>{
             res.json(data)
         })
     } catch (err) {
