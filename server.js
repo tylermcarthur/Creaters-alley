@@ -53,14 +53,24 @@ app.get('/api/page/:id/:num',async(req,res)=>{
     try {
         const scenario_name = req.params.id
         const page_number = req.params.num
-        pool.query(`SELECT * FROM pages WHERE pages.page_number = ${page_number}`,(err,data)=>{
+        pool.query(`SELECT * FROM pages WHERE pages.page_number = ${page_number} AND pages.scenario_name = ${scenario_name}` ,(err,data)=>{
             res.json(data)
         })
     } catch (err) {
         console.error(err.message)
     }
 })
-
+// this responds with all actions for that scenario name
+app.get('api/actions/:name',async(rec,res)=>{
+    try {
+        const name = req.params.name
+        pool.query(`SELECT * FROM actions WHERE scenario_name = ${name}`,(err,data)=>{
+            res.json(data)
+        })
+    } catch (err) {
+        console.error(err.message)
+    }
+})
 // causes our server to listen for incoming reuqests to this port
 app.listen(port, ()=>{
     console.log(`LISTINING ON PORT ${port}`)

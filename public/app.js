@@ -34,6 +34,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
                 textContainer.innerHTML = data[0].opening_text
                 
                 dataHolder1 = scenarioBox.value
+                dataholder2 = []
                 scenarioBox.value = ''
             })
         }
@@ -49,6 +50,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
             textContainer.innerHTML = data
             
             dataHolder1 = ''
+            dataholder2 = []
             scenarioBox.value = ''
         })
     }
@@ -64,6 +66,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
             textContainer.innerHTML = data
             
             dataHolder1 = ''
+            dataholder2 = []
             scenarioBox.value = ''
         })
     }
@@ -71,12 +74,25 @@ scenarioBox.addEventListener('keypress', async(e)=>{
 // to start playing the scenario
 scenarioBox.addEventListener('keypress', async(e)=>{
     if(e.key == 'Enter' && scenarioBox.value == 'play'){
+        // TO  go to page 1 and start them on their journey
         fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
         .then((resp)=> resp.json())
         .then(function(data){
             console.log(data.rows[0])
             textContainer.innerHTML = data.rows[0].page_text
-
+            scenarioBox.value = ''
+        })
+    }
+})
+// when playing the game the action entered here will point to dataholder 2 and if it contains the object with name of the action then it will go to the page the action describes
+// to save all the actions to an array once play is called
+scenarioBox.addEventListener('keypress', async(e)=>{
+    if(e.key == 'Enter' && scenarioBox.value == 'play'){
+        fetch(`https://creaters-alley.herokuapp.com/api/actions/${dataHolder1}`)
+        .then((resp)=> resp.json())
+        .then(function(data){
+            console.log(data.rows[0])
+            textContainer.innerHTML = data.rows[0].page_text
             scenarioBox.value = ''
         })
     }
