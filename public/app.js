@@ -60,7 +60,7 @@ scenarioBox.addEventListener('keypress', (e)=>{
 })
 
 // on document load populate the main text box with stuff
-textContainer.addEventListener('DOMContentLoaded', async (e)=>{
+window.addEventListener('DOMContentLoaded', async (e)=>{
     const response = await fetch('https://creaters-alley.herokuapp.com/api/public/opening_page',{
         method: 'GET',
         mode: 'cors',
