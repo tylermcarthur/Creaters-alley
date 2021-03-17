@@ -1,7 +1,7 @@
 const actionBox = document.querySelector('#inputBox');
 const scenarioBox = document.querySelector('#scenario-input-box');
 const textContainer = document.querySelector('#text_container')
-let dataHolder1; // this is used to hold which scenario they selected
+let dataHolder1 = "" // this is used to hold which scenario they selected
 let dataholder2 = [] // this will be used to hold all the page objects that will get pushed once play is used
 
 
