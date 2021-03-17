@@ -65,5 +65,6 @@ window.addEventListener('DOMContentLoaded', async (e)=>{
         method: 'GET',
         mode: 'cors',
     })
-    textContainer.innerHTML = response.rows
+    console.log(response)
+    textContainer.innerHTML = response
 })
