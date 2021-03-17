@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" height="70%" width="70" id="main_container">
-        <input type="text" class="inputBox"id="scenario-input-box" name="inputBox" placeholder="CHOOSE YOUR SCENARIO HERE">
+    <div id="hider" style="z-index: 0;"></div>
+    <button type="button" id="createNewBtn">CREATE NEW SCENARIO</button>
+    <div class="container" id="createBox" style="z-index: -1;"></div>
+    <div class="container" height="70%" width="70" id="main_container" style="z-index: 1;">
+        <input type="text" class="inputBox"id="scenario-input-box" name="inputBox" style="z-index: 1"placeholder="CHOOSE YOUR SCENARIO HERE">
         
-        <div class="container" id="text_container">THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS THIS IS THE BOX THAT WILL DISPLAY ALL THE TEXT NEEDED FOR READING DOING ACTIONS AND LISTING OUT ALL THE SCENARIOS </div>
+        <div class="container" style="z-index: 1" id="text_container"></div>
 
-        <input type="text" class="inputBox"id="action-input-box" placeholder="CHOOSE YOUR ACTIONS HERE">
+        <input type="text" style="z-index: 1" class="inputBox"id="action-input-box" placeholder="CHOOSE YOUR ACTIONS HERE">
 
     </div>
 </body>

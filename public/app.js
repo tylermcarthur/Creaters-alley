@@ -1,3 +1,5 @@
+    
+const createBox = document.querySelector('#createBox')
 const actionBox = document.querySelector('#action-input-box');
 const scenarioBox = document.querySelector('#scenario-input-box');
 const textContainer = document.querySelector('#text_container')
@@ -75,7 +77,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
 scenarioBox.addEventListener('keypress', async(e)=>{
     if(e.key == 'Enter' && scenarioBox.value == 'play'){
         // TO  go to page 1 and start them on their journey
-        fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/${dataholder3}`)
+        fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
         .then((resp)=> resp.json())
         .then(function(data){
             console.log(data.rows[0])
@@ -142,6 +144,15 @@ actionBox.addEventListener('keypress', async(e)=>{
         } else {
             window.alert("The action you picked does not work here.")
         }
+    }
+})
+
+// toggle btn for the visibilty of the create menu
+document.querySelector('#createNewBtn').addEventListener('Click',()=>{
+    if(createBox.style.display =="none"){
+        createBox.style.display = "block";
+    } else {
+        createBox.style.display = "none";
     }
 })
 
