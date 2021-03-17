@@ -75,7 +75,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
 scenarioBox.addEventListener('keypress', async(e)=>{
     if(e.key == 'Enter' && scenarioBox.value == 'play'){
         // TO  go to page 1 and start them on their journey
-        fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
+        fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/${dataholder3}`)
         .then((resp)=> resp.json())
         .then(function(data){
             console.log(data.rows[0])
@@ -104,6 +104,28 @@ scenarioBox.addEventListener('keypress', async(e)=>{
             console.log(dataholder2)
             scenarioBox.value = ''
         })
+    }
+})
+
+// time to deal with actions
+actionBox.addEventListener('keypress', async(e)=>{
+    if(e.key == 'Enter'){
+        let arrOfActions = dataholder2.map(x => x.action)
+        if(arrOfActions.includes(actionBox.value)){
+            let indexOfAction = arrOfActions.indexOf(actionBox.value)
+            let pageToGoTo = dataholder2[indexOfAction].toPage
+            dataholder3 = pageToGoTo;
+            fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/${dataholder3}`)
+        .then((resp)=> resp.json())
+        .then(function(data){
+            console.log(data.rows[0])
+            dataholder3 = data.rows[0].page_number
+            textContainer.innerHTML = data.rows[0].page_text
+            scenarioBox.value = ''
+        })
+        } else {
+            window.alert("The action you picked does not work here.")
+        }
     }
 })
 

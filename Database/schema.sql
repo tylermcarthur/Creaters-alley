@@ -24,6 +24,8 @@ CREATE TABLE actions(
    page_ID INT,
    actions_text TEXT,
    page_number INT,
+   scenario_name TEXT,
+   to_page_number INT,
    PRIMARY KEY(actions_ID),
    CONSTRAINT fk_pages
       FOREIGN KEY(page_ID)
