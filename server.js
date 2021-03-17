@@ -65,7 +65,7 @@ app.get('/api/actions/:name/:num',async(req,res)=>{
     try {
         const page_number = req.params.id
         const scenario_name = req.params.name
-        pool.query(`SELECT * FROM actions `,(err,data)=>{
+        pool.query(`SELECT * FROM actions WHERE actions.scenario_name = '${scenario_name}' AND actions.page_number = ${page_number}`,(err,data)=>{
             res.json(data)
         })
     } catch (err) {
