@@ -1,13 +1,22 @@
 body{
     background-color: dimgray;
 }
-#iframe{
-    position: absolute;
-    top: 10%;
-    right: 25%;
+#main_container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2%;
 }
-#inputBox{
-    position: absolute;
-    top: 70%;
-    right: 25%;
+#text_container{
+    background-color: slateblue;
+    flex-grow: 1;
+    flex-shrink: none;
+    flex-basis: 100%;
+    padding: 10%;
+    border: red;
+    border-style: dotted;
+}
+.inputBox{
+width: 20%;
 }

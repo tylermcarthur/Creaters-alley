@@ -1,6 +1,11 @@
-const inputBox = document.querySelector('#inputBox');
+const actionBox = document.querySelector('#inputBox');
+const scenarioBox = document.querySelector('#inputBox');
 const iframe = document.querySelector('#iframe')
 let dataHolder1 = '' // this is used to hold which scenario they selected
+let dataholder2 = [] // this will be used to hold all the page objects that will get pushed once play is used
+
+
+// this is where all the helper functions are
 
 // this is the helper function for deleting the entry
 async function deleteEntry(data){
@@ -15,8 +20,11 @@ async function deleteEntry(data){
     return response.json()
 }
 
+
+// these are my main functions that will be directly called
+
 // for selecting a scenario
-inputBox.addEventListener('keypress', (e)=>{
+scenarioBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value != 'play' && inputBox.value!= 'back' && inputBox.value != 'delete'){
         if(dataHolder1 == ""){
             iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/${inputBox.value}`)
@@ -26,7 +34,7 @@ inputBox.addEventListener('keypress', (e)=>{
     }
 })
 // for selecting Back
-inputBox.addEventListener('keypress', (e)=>{
+scenarioBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value == 'back'){
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
         dataHolder1 = ''
@@ -34,7 +42,7 @@ inputBox.addEventListener('keypress', (e)=>{
     }
 })
 // for deleting the selected entry
-inputBox.addEventListener('keypress', (e)=>{
+scenarioBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value == 'delete'){
         deleteEntry({scenario_name:dataHolder1});
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/public/opening_page`)
@@ -44,7 +52,7 @@ inputBox.addEventListener('keypress', (e)=>{
     }
 })
 // to start playing the scenario
-inputBox.addEventListener('keypress', (e)=>{
+scenarioBox.addEventListener('keypress', (e)=>{
     if(e.key == 'Enter' && inputBox.value == 'play'){
         iframe.setAttribute('src',`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
         inputBox.value = ''
