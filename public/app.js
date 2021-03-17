@@ -111,7 +111,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
 actionBox.addEventListener('keypress', async(e)=>{
     if(e.key == 'Enter'){
         if(dataholder2.map(x => x.action).includes(actionBox.value)){
-            dataholder3 = dataholder2[(dataholder2.map(x => x.action)).indexOf(actionBox.value)].toPage
+            dataholder2 = dataholder2[(dataholder2.map(x => x.action)).indexOf(actionBox.value)].toPage
             console.log(dataholder3)
             fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/${dataholder3}`)
         .then((resp)=> resp.json())
