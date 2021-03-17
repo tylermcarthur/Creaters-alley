@@ -75,7 +75,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
         .then((resp)=> resp.json())
         .then(function(data){
             console.log(data)
-            textContainer.innerHTML = data[0]
+            textContainer.innerHTML = data[0].rows
 
             scenarioBox.value = ''
         })
@@ -88,7 +88,7 @@ window.addEventListener('DOMContentLoaded', async(e)=>{
     .then((resp)=> resp.json())
     .then(function(data){
         console.log(data)
-        textContainer.innerHTML = data.rows
+        textContainer.innerHTML = data
 
     })
 })
