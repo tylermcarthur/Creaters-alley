@@ -1,4 +1,4 @@
-const actionBox = document.querySelector('#inputBox');
+const actionBox = document.querySelector('#action-input-box');
 const scenarioBox = document.querySelector('#scenario-input-box');
 const textContainer = document.querySelector('#text_container')
 let dataHolder1 = "" // this is used to hold which scenario they selected
