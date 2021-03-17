@@ -34,7 +34,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
                 textContainer.innerHTML = data[0].opening_text
                 
                 dataHolder1 = scenarioBox.value
-                inputBox.value = ''
+                scenarioBox.value = ''
             })
         }
     }
@@ -49,7 +49,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
             textContainer.innerHTML = data
             
             dataHolder1 = ''
-            inputBox.value = ''
+            scenarioBox.value = ''
         })
     }
 })
@@ -64,7 +64,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
             textContainer.innerHTML = data
             
             dataHolder1 = ''
-            inputBox.value = ''
+            scenarioBox.value = ''
         })
     }
 })
@@ -75,9 +75,9 @@ scenarioBox.addEventListener('keypress', async(e)=>{
         .then((resp)=> resp.json())
         .then(function(data){
             console.log(data)
-            textContainer.innerHTML = data
+            textContainer.innerHTML = data[0].page_text
 
-            inputBox.value = ''
+            scenarioBox.value = ''
         })
     }
 })
