@@ -89,7 +89,6 @@ scenarioBox.addEventListener('keypress', async(e)=>{
 // to save all the actions to an array once play is called
 scenarioBox.addEventListener('keypress', async(e)=>{
     if(e.key == 'Enter' && scenarioBox.value == 'play'){
-        console.log(dataholder3)
         fetch(`https://creaters-alley.herokuapp.com/api/actions/${dataHolder1}/${dataholder3}`)
         .then((resp)=> resp.json())
         .then(function(data){
