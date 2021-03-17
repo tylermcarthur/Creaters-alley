@@ -61,10 +61,11 @@ app.get('/api/page/:id/:num',async(req,res)=>{
     }
 })
 // this responds with all actions for that scenario name
-app.get('/api/actions/:name',async(rec,res)=>{
+app.get('/api/actions/:name/:id',async(rec,res)=>{
     try {
-        const name = req.params.name
-        pool.query(`SELECT * FROM actions WHERE scenario_name = ${name}`,(err,data)=>{
+        const page_id = req.params.id
+        const scenario_name = req.params.name
+        pool.query(`SELECT * FROM actions WHERE actions.scenario_name = '${scenario_name} AND actions.page_id = ${page_id}'`,(err,data)=>{
             res.json(data)
         })
     } catch (err) {
