@@ -72,7 +72,7 @@ scenarioBox.addEventListener('keypress', async(e)=>{
 scenarioBox.addEventListener('keypress', async(e)=>{
     if(e.key == 'Enter' && scenarioBox.value == 'play'){
         fetch(`https://creaters-alley.herokuapp.com/api/page/${dataHolder1}/1`)
-        .then((resp)=> resp.json())
+        //.then((resp)=> resp.json())
         .then(function(data){
             console.log(data)
             textContainer.innerHTML = data[0]
