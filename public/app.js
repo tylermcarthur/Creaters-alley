@@ -61,10 +61,11 @@ scenarioBox.addEventListener('keypress', (e)=>{
 
 // on document load populate the main text box with stuff
 window.addEventListener('DOMContentLoaded', async (e)=>{
-    const response = await fetch('https://creaters-alley.herokuapp.com/api/public/opening_page',{
-        method: 'GET',
-        mode: 'cors',
+    fetch('https://creaters-alley.herokuapp.com/api/public/opening_page')
+    .then((resp)=> resp.json())
+    .then(function(data){
+        console.log(data)
+        textContainer.innerHTML = data
+
     })
-    console.log(response)
-    textContainer.innerHTML = response
 })
