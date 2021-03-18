@@ -79,7 +79,7 @@ app.get('/api/actions/:name/:num',async(req,res)=>{
 app.post('/api/public/',async(req,res)=>{
     try {
         const sqlCommand = req.body.sqlCommand
-        console.log(sqlCommand)
+        console.log(req.body)
         pool.query(`${sqlCommand}`,(err,data)=>{
             res.json('inserted')
         })
