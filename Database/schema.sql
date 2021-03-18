@@ -18,6 +18,7 @@ CREATE TABLE pages(
    CONSTRAINT fk_scenarios
       FOREIGN KEY(scenario_name)
          REFERENCES scenarios(scenario_name)
+         ON DELETE CASCADE
 );
 CREATE TABLE actions(
    actions_ID SERIAL,
@@ -30,6 +31,7 @@ CREATE TABLE actions(
    CONSTRAINT fk_pages
       FOREIGN KEY(page_ID)
          REFERENCES pages(page_ID)
+         ON DELETE CASCADE
 );
 git add .
 git commit -m 'new commit'

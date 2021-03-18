@@ -270,6 +270,7 @@ document.querySelector('#createSubmitBtn').addEventListener('click', async(e)=>{
 })
 // on document load populate the main text box with stuff
 window.addEventListener('DOMContentLoaded', async(e)=>{
+    window.alert("The diffrent scenarios are listed in the blue box to select one type in its name in the input box at the top right. \n after you type in the name you can either play it by typing play in the same box or delete it by typing delete.")
     fetch('https://creaters-alley.herokuapp.com/api/public/opening_page')
     .then((resp)=> resp.json())
     .then(function(data){
