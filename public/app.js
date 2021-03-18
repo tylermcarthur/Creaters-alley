@@ -239,20 +239,20 @@ document.querySelector('#createSubmitBtn').addEventListener('click', async(e)=>{
     let arrOfActionInputNumber = document.querySelectorAll(`.inputActionNumber`)
     let arrOfActionInputText = document.querySelectorAll('.inputActionText')
         let data = {
-            sqlCommand: `INSERT INTO scenarios (scenario_name,opening_text) VALUES (${scenarioName},${scenarioText}),` 
+            sqlCommand: `INSERT INTO scenarios (scenario_name,opening_text) VALUES ('${scenarioName}','${scenarioText}');` 
         }
     
     arrOfPage.forEach(element => {
         let pageNumber = (document.querySelector(`#pageNumber${element.id.slice(7)}`).value)
         let pageText = (document.querySelector(`#pageText${element.id.slice(7)}`).value)
-        let pageCommand = `INSERT INTO pages (scenario_name,page_number,page_text) VALUES (${scenarioName},${pageNumber},${pageText}),`
+        let pageCommand = `INSERT INTO pages (scenario_name,page_number,page_text) VALUES ('${scenarioName}',${pageNumber},'${pageText}');`
         data.sqlCommand += pageCommand
         
         let numOfActions = ((document.querySelector(`#actionHolder${element.id.slice(7)}`).childElementCount)/2)
         for(let i = 0; i < numOfActions; i++){
             let actionText = arrOfActionInputText[dataHolder5].value;
             let actionNumberToGoTo = arrOfActionInputNumber[dataHolder5].value
-            let actionCommand = `INSERT INTO actions (actions_text,page_number,scenario_name,to_page_number) VALUES (${actionText},${pageNumber},${scenarioName},${actionNumberToGoTo}),`
+            let actionCommand = `INSERT INTO actions (actions_text,page_number,scenario_name,to_page_number) VALUES ('${actionText}',${pageNumber},'${scenarioName}',${actionNumberToGoTo});`
             data.sqlCommand += actionCommand;
 
             dataHolder5++
@@ -261,7 +261,7 @@ document.querySelector('#createSubmitBtn').addEventListener('click', async(e)=>{
 
 
 
-    console.log(data.sqlCommand.slice(0,-1))
+    data.sqlCommand = (data.sqlCommand.slice(0,-1))
     fetch('https://creaters-alley.herokuapp.com/api/public/',{
         method: 'POST',
         body: JSON.stringify(data)
