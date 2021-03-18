@@ -14,7 +14,6 @@ let dataholder4 = 1 // this will be used to count the number of create pages mad
 async function deleteEntry(data){
     const response = await fetch(`https://creaters-alley.herokuapp.com/api/public/`,{
     method: 'DELETE',
-    mode: 'cors',
     headers: {
         'Content-Type': 'application/json'
     },
