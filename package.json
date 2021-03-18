@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tylermcarthur/Creaters-alley#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.5.1"
