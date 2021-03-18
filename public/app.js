@@ -262,6 +262,7 @@ document.querySelector('#createSubmitBtn').addEventListener('click', async(e)=>{
 
 
     data.sqlCommand = (data.sqlCommand.slice(0,-1))
+    console.log(data)
     fetch('https://creaters-alley.herokuapp.com/api/public/',{
         method: 'POST',
         body: JSON.stringify(data)
