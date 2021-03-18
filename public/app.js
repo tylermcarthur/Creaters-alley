@@ -265,6 +265,7 @@ document.querySelector('#createSubmitBtn').addEventListener('click', async(e)=>{
     console.log(data)
     fetch('https://creaters-alley.herokuapp.com/api/public/',{
         method: 'POST',
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
     })
 })
