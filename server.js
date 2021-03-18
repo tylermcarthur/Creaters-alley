@@ -1,4 +1,5 @@
 require('dotenv').config()
+const cors = require('cors')
 const express = require('express')
 const pool = require('./Database/db_configuration.js');
 const port = process.env.PORT
@@ -6,7 +7,9 @@ const port = process.env.PORT
 // our server container
 const app = express();
 
-// middleware 
+
+// middleware
+app.use(cors()) 
 app.use(express.json()) // lets us read incoming req.body data as json
 app.use(express.static('public'));
 
