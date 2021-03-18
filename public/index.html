@@ -9,15 +9,34 @@
 </head>
 <body>
     <div id="hider" style="z-index: 0;"></div>
-    <button type="button" id="createNewBtn">CREATE NEW SCENARIO</button>
-    <div class="container" id="createBox" style="z-index: -1;"></div>
+    <div class="container" id="createBox" style="z-index: -1;">
+        <div id="topOfScenarioMaker">
+            <input type="text" placeholder="Scenario name">
+            <input type="text" placeholder="describe your scenario here">
+            <button type="button" id="pageBtn1">Add a page</button>
+            <hr>
+        </div>
+            <div id="newPage1" class="page">
+                <input type="number" placeholder="Page Number">
+                <input type="text"placeholder="page text">
+                <button type="button" id="actionBtn1">Add an action</button>
+                <hr>
+                <div>Actions for this page</div>
+                <div class="actions" id="actionHolder1">
+                    <input type="text" placeholder="What the action is called">
+                    <input type="text" placeholder="What page this action goes to">
+                </div>
+
+            </div>
+    </div>
     <div class="container" height="70%" width="70" id="main_container" style="z-index: 1;">
+        <button type="button" style="z-index: 2;" id="createNewBtn">CREATE NEW SCENARIO</button>
         <input type="text" class="inputBox"id="scenario-input-box" name="inputBox" style="z-index: 1"placeholder="CHOOSE YOUR SCENARIO HERE">
         
         <div class="container" style="z-index: 1" id="text_container"></div>
-
+        
         <input type="text" style="z-index: 1" class="inputBox"id="action-input-box" placeholder="CHOOSE YOUR ACTIONS HERE">
-
+        
     </div>
 </body>
 <script src="app.js"></script>

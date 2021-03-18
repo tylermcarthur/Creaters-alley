@@ -1,4 +1,4 @@
-    
+const createBtn = document.querySelector('#createNewBtn')    
 const createBox = document.querySelector('#createBox')
 const actionBox = document.querySelector('#action-input-box');
 const scenarioBox = document.querySelector('#scenario-input-box');
@@ -6,6 +6,7 @@ const textContainer = document.querySelector('#text_container')
 let dataHolder1 = "" // this is used to hold which scenario they selected
 let dataholder2 = [] // this will be used to hold all the page objects that will get pushed once play is used
 let dataholder3 = 1 // this will hold the current page id so that actions knows whats going on
+let dataholder4 = 1 // this will be used to count the number of create pages made
 
 // this is where all the helper functions are
 
@@ -148,12 +149,63 @@ actionBox.addEventListener('keypress', async(e)=>{
 })
 
 // toggle btn for the visibilty of the create menu
-document.querySelector('#createNewBtn').addEventListener('Click',()=>{
-    if(createBox.style.display =="none"){
-        createBox.style.display = "block";
+createBtn.addEventListener("click",()=>{
+    if(createBox.style.zIndex == -1){
+        createBox.style.zIndex = 2;
     } else {
-        createBox.style.display = "none";
+        createBox.style.zIndex = -1;
     }
+})
+// the add page btn
+document.querySelector('#pageBtn1').addEventListener('click', ()=>{
+    console.log('here')
+    dataholder4 ++;
+    let newPage = document.createElement("div")
+    newPage.classList.add("page")
+    newPage.setAttribute("id",`newPage${dataholder4}`)
+
+    let newPageNumberInput = document.createElement("INPUT")
+    newPageNumberInput.setAttribute("type","number")
+    newPageNumberInput.setAttribute("placeholder", "Page Number")
+    newPage.appendChild(newPageNumberInput)
+
+    let newPageTextInput = document.createElement("INPUT")
+    newPageTextInput.setAttribute("type","text")
+    newPageTextInput.setAttribute("placeholder","page text")
+    newPage.appendChild(newPageTextInput)
+
+    let newActionBtn = document.createElement("div")
+    newActionBtn.setAttribute("id",`actionBtn${dataholder4}`)
+    newActionBtn.setAttribute("type","button")
+    
+    newPage.appendChild(newActionBtn)
+    
+    let newHR = document.createElement("HR")
+    newPage.appendChild(newHR)
+    
+    let textDiv = document.createElement("div")
+    textDiv.innerHTML = "Actions for This page"
+    newPage.appendChild(textDiv)
+    
+    let newActionHolder = document.createElement("div")
+    newActionHolder.classList.add("actions")
+    newActionHolder.setAttribute("id",`actionHolder${dataholder4}`)
+    // this will be the create new action for that page button
+    newActionBtn.addEventListener('click', ()=>{
+        let targetActionHolder = document.querySelector(`#actionHolder${dataholder4}`)
+        
+        let newActionTextInput = document.createElement("INPUT")
+        newActionTextInput.setAttribute("type","text")
+        newActionTextInput.setAttribute("placeholder","What the action is called")
+        targetActionHolder.appendChild(newActionTextInput)
+        
+        let newActionNumberInput = document.createElement("INPUT")
+        newActionNumberInput.setAttribute("type","number")
+        newActionNumberInput.setAttribute("placeholder","What page the action goes to")
+        targetActionHolder.appendChild(newActionNumberInput)
+        
+        createBox.appendChild(newPage)
+    })
 })
 
 // on document load populate the main text box with stuff

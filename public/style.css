@@ -34,9 +34,25 @@ width: 20%;
 }
 #createBox{
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 13%;
+    left: 10%;
     background-color: snow;
-    height: 80%;
+    height: 150%;
     width: 80%;
+    padding: .2%;
+}
+#topOfScenarioMaker{
+    display: flex;
+    flex-direction: column;
+    height: 11.5%;
+    width: 100%;
+}
+.actions{
+    border: black;
+    border-style: inset;
+width: 12%;
+margin: 0%;
+}
+.page{
+    padding-bottom: 1%;
 }
