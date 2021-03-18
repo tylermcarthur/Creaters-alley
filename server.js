@@ -78,6 +78,7 @@ app.get('/api/actions/:name/:num',async(req,res)=>{
 // this will be used to receive the sent scenario
 app.post('/api/public/',async(req,res)=>{
     try {
+        console.log('here')
         const sqlCommand = req.body.sqlCommand
         pool.query(`${sqlCommand}`,(err,data)=>{
             res.json('inserted')
