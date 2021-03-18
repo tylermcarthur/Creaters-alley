@@ -44,6 +44,7 @@ app.get('/api/public/:id', async(req,res)=>{
 app.delete('/api/public/', async(req,res)=>{
   try {
       const name = req.body.scenario_name
+      console.log(req.body.scenario_name)
       pool.query(`DELETE FROM scenarios WHERE scenario_name = '${name}'`, (err,data)=>{
           res.json('Deleted')
       })
