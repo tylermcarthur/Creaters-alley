@@ -75,6 +75,18 @@ app.get('/api/actions/:name/:num',async(req,res)=>{
         console.error(err.message)
     }
 })
+// this will be used to receive the sent scenario
+app.post('/api/public/',async(req,res)=>{
+    try {
+        const sqlCommand = req.body.sqlCommand
+        pool.query(`${sqlCommand}`,(err,data)=>{
+            res.json('inserted')
+        })
+
+    } catch (err) {
+        console.error(err.message)
+    }
+})
 // causes our server to listen for incoming reuqests to this port
 app.listen(port, ()=>{
     console.log(`LISTINING ON PORT ${port}`)

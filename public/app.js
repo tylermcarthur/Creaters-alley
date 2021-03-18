@@ -158,7 +158,6 @@ createBtn.addEventListener("click",()=>{
 })
 // the add page btn
 document.querySelector('#pageBtn1').addEventListener('click', ()=>{
-    console.log('here')
     dataholder4 ++;
     let newPage = document.createElement("div")
     newPage.classList.add("page")
@@ -166,18 +165,20 @@ document.querySelector('#pageBtn1').addEventListener('click', ()=>{
 
     let newPageNumberInput = document.createElement("INPUT")
     newPageNumberInput.setAttribute("type","number")
+    newPageNumberInput.setAttribute("id",`pageNumber${dataholder4}`)
     newPageNumberInput.setAttribute("placeholder", "Page Number")
     newPage.appendChild(newPageNumberInput)
 
     let newPageTextInput = document.createElement("INPUT")
     newPageTextInput.setAttribute("type","text")
     newPageTextInput.setAttribute("placeholder","page text")
+    newPageTextInput.setAttribute("id",`pageText${dataholder4}`)
     newPage.appendChild(newPageTextInput)
 
-    let newActionBtn = document.createElement("div")
+    let newActionBtn = document.createElement("button")
     newActionBtn.setAttribute("id",`actionBtn${dataholder4}`)
     newActionBtn.setAttribute("type","button")
-    
+    newActionBtn.innerHTML = "Add an action to current page"
     newPage.appendChild(newActionBtn)
     
     let newHR = document.createElement("HR")
@@ -190,24 +191,82 @@ document.querySelector('#pageBtn1').addEventListener('click', ()=>{
     let newActionHolder = document.createElement("div")
     newActionHolder.classList.add("actions")
     newActionHolder.setAttribute("id",`actionHolder${dataholder4}`)
+    newPage.appendChild(newActionHolder)
     // this will be the create new action for that page button
-    newActionBtn.addEventListener('click', ()=>{
-        let targetActionHolder = document.querySelector(`#actionHolder${dataholder4}`)
-        
+    newActionBtn.addEventListener('click', (e)=>{
+        let targetNum = (e.target.id.slice(9))
+        let targetActionHolder = document.querySelector(`#actionHolder${targetNum}`)
+
         let newActionTextInput = document.createElement("INPUT")
         newActionTextInput.setAttribute("type","text")
         newActionTextInput.setAttribute("placeholder","What the action is called")
+        newActionTextInput.classList.add("inputActionText")
         targetActionHolder.appendChild(newActionTextInput)
         
         let newActionNumberInput = document.createElement("INPUT")
         newActionNumberInput.setAttribute("type","number")
         newActionNumberInput.setAttribute("placeholder","What page the action goes to")
+        newActionNumberInput.classList.add("inputActionNumber")
+
         targetActionHolder.appendChild(newActionNumberInput)
         
-        createBox.appendChild(newPage)
+    })
+    document.querySelector('#createBox').appendChild(newPage)
+})
+document.querySelector('#actionBtn1').addEventListener('click', (e)=>{
+    let targetNum = (e.target.id.slice(9))
+    let targetActionHolder = document.querySelector(`#actionHolder${targetNum}`)
+
+    let newActionTextInput = document.createElement("INPUT")
+    newActionTextInput.setAttribute("type","text")
+    newActionTextInput.setAttribute("placeholder","What the action is called")
+    newActionTextInput.classList.add("inputActionText")
+    targetActionHolder.appendChild(newActionTextInput)
+    
+    let newActionNumberInput = document.createElement("INPUT")
+    newActionNumberInput.setAttribute("type","number")
+    newActionNumberInput.setAttribute("placeholder","What page the action goes to")
+    newActionNumberInput.classList.add("inputActionNumber")
+    targetActionHolder.appendChild(newActionNumberInput)
+    
+})
+// submit all the infromation that was put into EVERY input box
+document.querySelector('#createSubmitBtn').addEventListener('click', async(e)=>{
+    let dataHolder5 = 0
+    let scenarioName = document.querySelector('#createScenarioName').value
+    let scenarioText = document.querySelector('#createScenarioDescription').value
+    let arrOfPage = (document.querySelectorAll(".page"))
+    let arrOfActionInputNumber = document.querySelectorAll(`.inputActionNumber`)
+    let arrOfActionInputText = document.querySelectorAll('.inputActionText')
+        let data = {
+            sqlCommand: `INSERT INTO scenarios (scenario_name,opening_text) VALUES (${scenarioName},${scenarioText}),` 
+        }
+    
+    arrOfPage.forEach(element => {
+        let pageNumber = (document.querySelector(`#pageNumber${element.id.slice(7)}`).value)
+        let pageText = (document.querySelector(`#pageText${element.id.slice(7)}`).value)
+        let pageCommand = `INSERT INTO pages (scenario_name,page_number,page_text) VALUES (${scenarioName},${pageNumber},${pageText}),`
+        data.sqlCommand += pageCommand
+        
+        let numOfActions = ((document.querySelector(`#actionHolder${element.id.slice(7)}`).childElementCount)/2)
+        for(let i = 0; i < numOfActions; i++){
+            let actionText = arrOfActionInputText[dataHolder5].value;
+            let actionNumberToGoTo = arrOfActionInputNumber[dataHolder5].value
+            let actionCommand = `INSERT INTO actions (actions_text,page_number,scenario_name,to_page_number) VALUES (${actionText},${pageNumber},${scenarioName},${actionNumberToGoTo}),`
+            data.sqlCommand += actionCommand;
+
+            dataHolder5++
+        }
+    });
+
+
+
+    console.log(data.sqlCommand.slice(0,-1))
+    fetch('https://creaters-alley.herokuapp.com/api/public/',{
+        method: 'POST',
+        body: JSON.stringify(data)
     })
 })
-
 // on document load populate the main text box with stuff
 window.addEventListener('DOMContentLoaded', async(e)=>{
     fetch('https://creaters-alley.herokuapp.com/api/public/opening_page')

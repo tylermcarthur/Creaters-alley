@@ -40,6 +40,7 @@ width: 20%;
     height: 150%;
     width: 80%;
     padding: .2%;
+    overflow: scroll;
 }
 #topOfScenarioMaker{
     display: flex;
@@ -50,9 +51,12 @@ width: 20%;
 .actions{
     border: black;
     border-style: inset;
-width: 12%;
+width: 12.1%;
 margin: 0%;
 }
 .page{
     padding-bottom: 1%;
+}
+.inputActionNumber{
+    margin-bottom: 10%;
 }

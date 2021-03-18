@@ -11,20 +11,21 @@
     <div id="hider" style="z-index: 0;"></div>
     <div class="container" id="createBox" style="z-index: -1;">
         <div id="topOfScenarioMaker">
-            <input type="text" placeholder="Scenario name">
-            <input type="text" placeholder="describe your scenario here">
+            <input type="text" id="createScenarioName" placeholder="Scenario name">
+            <input type="text" id="createScenarioDescription" placeholder="describe your scenario here">
             <button type="button" id="pageBtn1">Add a page</button>
+            <button type="button" id="createSubmitBtn">Submit All your work</button>
             <hr>
         </div>
             <div id="newPage1" class="page">
-                <input type="number" placeholder="Page Number">
-                <input type="text"placeholder="page text">
+                <input type="number" class="inputPageNumber" id="pageNumber1" placeholder="Page Number">
+                <input type="text" class="inputPageText" id="pageText1" placeholder="page text">
                 <button type="button" id="actionBtn1">Add an action</button>
                 <hr>
                 <div>Actions for this page</div>
                 <div class="actions" id="actionHolder1">
-                    <input type="text" placeholder="What the action is called">
-                    <input type="text" placeholder="What page this action goes to">
+                    <input type="text" id="inputActionText1" class="inputActionText" placeholder="What the action is called">
+                    <input type="number" id="inputActionNumber1" class = "inputActionNumber"placeholder="What page this action goes to">
                 </div>
 
             </div>
