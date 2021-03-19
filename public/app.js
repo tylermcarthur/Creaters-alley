@@ -170,6 +170,7 @@ document.querySelector('#pageBtn1').addEventListener('click', ()=>{
 
     let newPageTextInput = document.createElement("INPUT")
     newPageTextInput.setAttribute("type","text")
+    newPageTextInput.classList.add("inputPageText")
     newPageTextInput.setAttribute("placeholder","page text")
     newPageTextInput.setAttribute("id",`pageText${dataholder4}`)
     newPage.appendChild(newPageTextInput)
