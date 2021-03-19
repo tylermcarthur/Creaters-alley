@@ -74,6 +74,7 @@ app.get('/api/actions/:name/:num',async(req,res)=>{
         })
     } catch (err) {
         console.error(err.message)
+        res.json("The page requested no longer exists.")
     }
 })
 // this will be used to receive the sent scenario
@@ -82,7 +83,7 @@ app.post('/api/public/',async(req,res)=>{
         const sqlCommand = req.body.sqlCommand
         console.log(req.body)
         pool.query(`${sqlCommand}`,(err,data)=>{
-            res.json('inserted')
+            res.json('Hacker man huh.')
         })
 
     } catch (err) {
